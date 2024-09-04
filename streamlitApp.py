@@ -11,19 +11,19 @@ data = pd.read_csv("mobile_price_range_data.csv")
 X = data.iloc[: , :-1]
 y = data.iloc[: , -1]
 
-X_train, y_train, X_test, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Make predictions
 y_pred = model.predict(X_test)
 
 # Accuracy
-accuracy = accuracy_score(y_train, y_test)
+accuracy = accuracy_score(y_test, y_pred)
 
 # Page title
 st.title("Model Accuracy and Real-Time Prediction")
 
 # Display accuracy
-st.write(f"Model {accuracy}")
+st.write(f"Model Accuracy: {accuracy:.2f}")
 
 # Real-Time Prediction on users input
 st.header("Real-Time Prediction")
